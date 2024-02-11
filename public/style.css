@@ -1,38 +1,81 @@
+:root {
+    --black: #000000;
+    --white: #ffffff;
+    --gray: #808080;
+    --primary: #0075FF;
+    --delete: #FF007A;
+    --edit: #BD00FF;
+}
+
+body {
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    color: var(--black);
+    padding: 20px;
+}
+
+h1, h2 {
+    color: var(--primary);
+}
+
 .directory-container {
-    border: 1px solid black;
+    border: 1px solid var(--black);
     border-radius: 20px;
     padding: 20px;
     margin: 20px 0;
     width: fit-content;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
 table {
     border-collapse: collapse;
     margin-top: 10px;
-}
-
-table, th, td {
-    border: 1px solid black;
+    width: 100%;
 }
 
 th, td {
+    border: 1px solid var(--black);
     padding: 8px;
     text-align: left;
 }
 
-button {
-    margin-bottom: 10px;
-    cursor: pointer;
+th {
+    background-color: var(--gray);
 }
 
-/* Стилизация кнопок действий в строках таблицы */
-.action-btn {
+.action-btn, #add-employee-btn {
     border: none;
-    background-color: transparent;
+    border-radius: 5px;
+    padding: 5px 10px;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, transform 0.2s;
+    color: var(--white);
+    font-size: 24px;
 }
 
-/* Дополнительные стили для иконок кнопок, если вы используете их */
-.edit-icon, .delete-icon {
-    /* Здесь можно добавить стили для иконок, например, размеры или цвет */
+.action-btn:hover, #add-employee-btn:hover {
+    background-color: var(--gray);
+}
+
+.action-btn:active, #add-employee-btn:active {
+    transform: scale(0.95);
+}
+
+#add-employee-btn {
+    background-color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.delete-btn {
+    color: var(--delete);
+}
+
+.edit-btn {
+    color: var(--edit);
+}
+
+.material-icons {
+    vertical-align: bottom;
 }
