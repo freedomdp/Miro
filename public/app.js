@@ -41,35 +41,48 @@ function fetchAndDisplayDirectory() {
 }
 
 function displayDirectory(data) {
-  // Создаём таблицу
-  let table = document.createElement('table');
-  table.setAttribute('id', 'directory-table');
+  let tbody = document.querySelector('#directory-table tbody');
+  tbody.innerHTML = ''; // Очищаем текущее содержимое tbody
 
-  // Создаём заголовки для таблицы
-  let thead = table.createTHead();
-  let row = thead.insertRow();
-  let headers = ['ID', 'Employee Name'];
-  headers.forEach(headerText => {
-    let header = document.createElement('th');
-    header.textContent = headerText;
-    row.appendChild(header);
-  });
-
-  // Заполняем таблицу данными
-  let tbody = table.createTBody();
   Object.keys(data).forEach(key => {
-    let row = tbody.insertRow();
-    let cell = row.insertCell();
-    cell.textContent = key; // ID сотрудника
-    cell = row.insertCell();
-    cell.textContent = data[key]; // Имя сотрудника
-  });
+      let row = tbody.insertRow();
+      let cellId = row.insertCell();
+      cellId.textContent = key; // ID сотрудника
 
-  // Добавляем таблицу в контейнер
-  let container = document.getElementById('directory-container');
-  container.appendChild(table);
+      let cellName = row.insertCell();
+      cellName.textContent = data[key]; // Имя сотрудника
+
+      let cellActions = row.insertCell();
+      // Создаем и добавляем кнопки действий
+      let deleteBtn = document.createElement('button');
+      deleteBtn.innerHTML = 'Delete'; // Используйте здесь свои иконки
+      deleteBtn.classList.add('action-btn', 'delete-icon');
+      // Обработчик события удаления
+      deleteBtn.onclick = function() { deleteEmployee(key); };
+
+      let editBtn = document.createElement('button');
+      editBtn.innerHTML = 'Edit'; // Используйте здесь свои иконки
+      editBtn.classList.add('action-btn', 'edit-icon');
+      // Обработчик события редактирования
+      editBtn.onclick = function() { editEmployee(key); };
+
+      cellActions.appendChild(editBtn);
+      cellActions.appendChild(deleteBtn);
+  });
 }
 
 
 // Вызываем функцию fetchAndDisplayDirectory для загрузки и отображения данных
 fetchAndDisplayDirectory();
+
+
+// Функции deleteEmployee и editEmployee нужно реализовать в соответствии с вашей логикой
+function deleteEmployee(key) {
+  console.log('Deleting employee', key);
+  // Здесь логика удаления сотрудника из Firebase
+}
+
+function editEmployee(key) {
+  console.log('Editing employee', key);
+  // Здесь логика редактирования сотрудника
+}

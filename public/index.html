@@ -2,10 +2,26 @@
 <html>
 <head>
     <title>Firebase App</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Welcome to Firebase App</h1>
-    <div id="directory-container"></div>
+    <h1>Smart Ship Cars accounting</h1>
+    <div id="directory-container" class="directory-container">
+        <h2>Directory</h2>
+        <button id="add-employee-btn">Add Employee</button>
+        <table id="directory-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Employee Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Данные будут добавлены здесь при помощи JS -->
+            </tbody>
+        </table>
+    </div>
     <script type="module" src="app.js"></script>
 </body>
 </html>
