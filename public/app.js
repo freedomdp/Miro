@@ -24,23 +24,14 @@ import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/1
 // Инициализируем базу данных
 const database = getDatabase(app);
 
-// Функция для записи данных
-function writeData() {
-  set(ref(database, 'test/path'), {
-    exampleField: 'Hello, Firebase!'
-  }).then(() => {
-    console.log('Data written successfully!');
-    readData(); // Читаем данные после успешной записи
-  }).catch((error) => {
-    console.error('Failed to write data:', error);
-  });
-}
-
-// Функция для чтения данных
-function readData() {
-  get(ref(database, 'test/path')).then((snapshot) => {
+// Функция для чтения данных из таблицы Directory и отображения в таблице
+function fetchAndDisplayDirectory() {
+  const dbRef = ref(database, 'Directory');
+  get(dbRef).then((snapshot) => {
     if (snapshot.exists()) {
-      console.log('Received data:', snapshot.val());
+      const data = snapshot.val();
+      console.log('Received data:', data);
+      displayDirectory(data);
     } else {
       console.log('No data available');
     }
@@ -49,5 +40,36 @@ function readData() {
   });
 }
 
-// Вызываем функцию writeData для демонстрации
-writeData();
+function displayDirectory(data) {
+  // Создаём таблицу
+  let table = document.createElement('table');
+  table.setAttribute('id', 'directory-table');
+
+  // Создаём заголовки для таблицы
+  let thead = table.createTHead();
+  let row = thead.insertRow();
+  let headers = ['ID', 'Employee Name'];
+  headers.forEach(headerText => {
+    let header = document.createElement('th');
+    header.textContent = headerText;
+    row.appendChild(header);
+  });
+
+  // Заполняем таблицу данными
+  let tbody = table.createTBody();
+  Object.keys(data).forEach(key => {
+    let row = tbody.insertRow();
+    let cell = row.insertCell();
+    cell.textContent = key; // ID сотрудника
+    cell = row.insertCell();
+    cell.textContent = data[key]; // Имя сотрудника
+  });
+
+  // Добавляем таблицу в контейнер
+  let container = document.getElementById('directory-container');
+  container.appendChild(table);
+}
+
+
+// Вызываем функцию fetchAndDisplayDirectory для загрузки и отображения данных
+fetchAndDisplayDirectory();
