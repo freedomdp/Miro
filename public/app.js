@@ -37,14 +37,13 @@ function displayDirectory(data) {
     tbody.innerHTML = ''; // Clear current content
 
     Object.keys(data).forEach(key => {
-        const row = tbody.insertRow();
-        row.insertCell().textContent = key; // ID
-        row.insertCell().textContent = data[key]; // Employee Name
+      const row = tbody.insertRow();
+      row.insertCell().textContent = data[key]; // Employee Name
 
-        const actionsCell = row.insertCell();
-        actionsCell.appendChild(createActionButton('edit', 'edit-btn', () => editEmployee(key)));
-        actionsCell.appendChild(createActionButton('delete', 'delete-btn', () => deleteEmployee(key)));
-    });
+      const actionsCell = row.insertCell();
+      actionsCell.appendChild(createActionButton('edit', 'edit-btn', () => editEmployee(key)));
+      actionsCell.appendChild(createActionButton('delete', 'delete-btn', () => deleteEmployee(key)));
+  });
 }
 
 function createActionButton(iconName, btnClass, onClick) {
