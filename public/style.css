@@ -103,35 +103,58 @@ th {
 /* ---------------------- ADD employee ---------------- */
 .modal {
     display: none;
-    background-color: #fefefe;
-    margin: 15% auto; /* Центрирование и отступ сверху */
-    padding: 20px;
-    border: 1px solid #888;
-    width: auto; /* Автоматический подбор ширины */
-    max-width: 600px; /* Максимальная ширина для больших экранов */
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column; /* Элементы в колонку */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
 }
+
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* Центрирование и отступ сверху */
+    background-color: var(--white);
+    margin: 10% auto;
     padding: 20px;
-    border: 1px solid #888;
-    width: auto; /* Автоматический подбор ширины */
-    max-width: 600px; /* Максимальная ширина для больших экранов */
-    border-radius: 5px;
+    border: 1px solid var(--gray);
+    width: 40%;
+    max-width: 500px;
+    border-radius: 20px;
     display: flex;
-    flex-direction: column; /* Элементы в колонку */
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-content h2 {
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.close {
+    color: var(--black);
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 #add-employee-form {
+    width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 #employee-name {
-    margin-bottom: 20px; /* Отступ для поля ввода */
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    border: 1px solid var(--gray);
+    font-size: 16px;
 }
 
 .btn-save {
@@ -145,12 +168,11 @@ th {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 80%;
+    max-width: 200px;
+    margin-top: 10px;
 }
 
-.btn-save:hover {
-    background-color: darken(var(--primary), 10%);
-}
-
-.material-icons {
+.btn-save i.material-icons {
     margin-right: 8px;
 }

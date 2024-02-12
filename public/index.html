@@ -25,17 +25,20 @@
             </tbody>
         </table>
     </div>
-    <!-- Всплывающее окно для добавления нового сотрудника -->
+        <!-- Модальное окно для добавления нового сотрудника -->
     <div id="modal-add-employee" class="modal">
         <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h2>Add New Employee</h2>
+            <span class="close">&times;</span>
             <form id="add-employee-form">
-                <input type="text" id="employee-name" placeholder="Employee Name" required>
-                <button type="submit" class="btn-save material-icons">save Save</button>
+                <label for="employee-name">Employee Name:</label>
+                <input type="text" id="employee-name" name="employee-name" required>
+                <button type="submit" class="btn-save">
+                    <i class="material-icons">save</i>Save
+                </button>
             </form>
         </div>
     </div>
+
     <script type="module" src="app.js"></script>
 </body>
 </html>
