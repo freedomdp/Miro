@@ -101,40 +101,25 @@ th {
     vertical-align: bottom;
 }
 /* ---------------------- ADD employee ---------------- */
-.modal {
-    display: none; /* Скрыто по умолчанию */
-    position: fixed; /* Остается на месте при прокрутке */
-    z-index: 1; /* Сидит поверх всего */
-    left: 0;
-    top: 0;
-    width: 100%; /* Полная ширина */
-    height: 100%; /* Полная высота */
-    overflow: auto; /* Включить прокрутку, если нужно */
-    background-color: rgb(0,0,0); /* Цвет фона */
-    background-color: rgba(0,0,0,0.4); /* Цвет фона с небольшой прозрачностью */
-}
-
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% от верха и центрировано по горизонтали */
+    margin: 15% auto; /* Центрирование и отступ сверху */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Можно настроить ширину */
-    border-radius: 5px; /* Скругленные углы */
+    width: auto; /* Автоматический подбор ширины */
+    max-width: 600px; /* Максимальная ширина для больших экранов */
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column; /* Элементы в колонку */
 }
 
-.close-btn {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+#add-employee-form {
+    display: flex;
+    flex-direction: column;
 }
 
-.close-btn:hover,
-.close-btn:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+#employee-name {
+    margin-bottom: 20px; /* Отступ для поля ввода */
 }
 
 .btn-save {
@@ -145,8 +130,15 @@ th {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn-save:hover {
     background-color: darken(var(--primary), 10%);
+}
+
+.material-icons {
+    margin-right: 8px;
 }
