@@ -66,3 +66,31 @@ function editEmployee(key) {
 
 // Initial fetch and display
 fetchAndDisplayDirectory();
+
+/* ---------------------- ADD employee ---------------- */
+document.getElementById('add-employee-btn').addEventListener('click', function() {
+  document.getElementById('modal-add-employee').style.display = 'block';
+});
+
+document.querySelector('.close-btn').addEventListener('click', function() {
+  document.getElementById('modal-add-employee').style.display = 'none';
+});
+
+document.getElementById('add-employee-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const employeeName = document.getElementById('employee-name').value;
+  addNewEmployee(employeeName);
+  document.getElementById('modal-add-employee').style.display = 'none';
+});
+
+function addNewEmployee(name) {
+  const newPostKey = ref(database, 'Directory').push().key;
+  set(ref(database, 'Directory/' + newPostKey), name)
+  .then(() => {
+      console.log('New employee added successfully.');
+      fetchAndDisplayDirectory(); // Обновляем список сотрудников
+  })
+  .catch((error) => {
+      console.error('Error adding new employee:', error);
+  });
+}
