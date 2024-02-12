@@ -94,3 +94,11 @@ function addNewEmployee(name) {
       console.error('Error adding new employee:', error);
   });
 }
+//показать окно
+document.getElementById('add-employee-btn').addEventListener('click', function() {
+  document.getElementById('modal-add-employee').style.display = 'block';
+});
+//И обработчик для кнопки закрытия, чтобы скрыть модальное окно обратно:
+document.querySelector('.close-btn').addEventListener('click', function() {
+  document.getElementById('modal-add-employee').style.display = 'none';
+});

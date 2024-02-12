@@ -101,6 +101,18 @@ th {
     vertical-align: bottom;
 }
 /* ---------------------- ADD employee ---------------- */
+.modal {
+    display: none;
+    background-color: #fefefe;
+    margin: 15% auto; /* Центрирование и отступ сверху */
+    padding: 20px;
+    border: 1px solid #888;
+    width: auto; /* Автоматический подбор ширины */
+    max-width: 600px; /* Максимальная ширина для больших экранов */
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column; /* Элементы в колонку */
+}
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto; /* Центрирование и отступ сверху */
