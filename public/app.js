@@ -67,33 +67,34 @@ function editEmployee(key) {
 // Initial fetch and display
 fetchAndDisplayDirectory();
 
-/* ---------------------- ADD employee ---------------- */
-// Открытие модального окна
-document.getElementById('add-employee-btn').addEventListener('click', function() {
-  document.getElementById('modal-add-employee').style.display = 'block';
-});
 
-// Закрытие модального окна
-document.querySelector('.close').addEventListener('click', function() {
-  document.getElementById('modal-add-employee').style.display = 'none';
-});
+// ------------------------------- Employee Modal ------------------------------------
+// Функция для динамической загрузки модального окна
+function loadModal() {
+  // Загрузка HTML
+  fetch('modals/addEmployeeModal.html')
+      .then(response => response.text())
+      .then(html => {
+          document.body.insertAdjacentHTML('beforeend', html);
+          loadModalScript();
+      })
+      .catch(error => console.error('Failed to load modal HTML:', error));
 
-// Добавление нового сотрудника
-document.getElementById('add-employee-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const employeeName = document.getElementById('employee-name').value;
-  // Здесь добавьте логику добавления сотрудника в Firebase
-  addNewEmployee(employeeName);
-});
-
-// Функция для добавления нового сотрудника в базу данных
-function addNewEmployee(name) {
-  // Пример добавления сотрудника, реализуйте согласно вашей логике в Firebase
-  const dbRef = firebase.database().ref('Directory').push();
-  dbRef.set({
-      name: name
-  }).then(() => {
-      document.getElementById('modal-add-employee').style.display = 'none'; // Закрываем модальное окно после сохранения
-      // Опционально: обновление списка сотрудников на странице
-  });
+  // Динамическая загрузка CSS
+  const link = document.createElement('link');
+  link.href = 'modals/addEmployeeModal.css';
+  link.type = 'text/css';
+  link.rel = 'stylesheet';
+  document.head.appendChild(link);
 }
+
+// Функция для загрузки и исполнения JavaScript модального окна
+function loadModalScript() {
+  const script = document.createElement('script');
+  script.src = 'modals/addEmployeeModal.js';
+  script.defer = true;
+  document.body.appendChild(script);
+}
+
+// Вызов функции загрузки при полной загрузке страницы
+document.addEventListener('DOMContentLoaded', loadModal);

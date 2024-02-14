@@ -4,15 +4,17 @@
     <title>Miro accounting</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="components/buttons/button.css">
+    <link rel="stylesheet" href="components/tables/directoryTable.css">
 </head>
 <body>
     <h1>Smart Ship Cars accounting</h1>
     <div id="directory-container" class="directory-container">
         <h2>Directory</h2>
-        <button id="add-employee-btn">
-            <i class="material-icons">add</i>
+        <a href="your-link.html" class="button-container">
+            <span class="icon material-icons">add</span>
             <span>Add Employee</span>
-        </button>
+        </a>
         <table id="directory-table">
             <thead>
                 <tr>
@@ -40,5 +42,6 @@
     </div>
 
     <script type="module" src="app.js"></script>
+    <script type="module" src="components/tables/directoryTable.js"></script>
 </body>
 </html>

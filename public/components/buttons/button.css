@@ -1,0 +1,53 @@
+@import url('../styles/colors.css');
+
+.button-container {
+    padding: 15px 25px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%); /* Используем два цвета из библиотеки цветов */
+    color: var(--white);
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Для плавного увеличения и тени */
+}
+
+.button-container:hover {
+    transform: scale(1.1); /* Увеличение кнопки на 10% */
+    box-shadow: 0 5px 15px 0 rgba(0,0,0,0.3); /* Увеличиваем тень для лучшего эффекта */
+}
+
+/* Определяем более темный оттенок для градиента */
+:root {
+    --primary-dark: #0066cc; /* Это ваш определенный более темный оттенок */
+}
+
+/* Стили для второстепенной и неактивной кнопок */
+.button-container.secondary {
+    background: var(--gray);
+    color: var(--black);
+}
+
+.button-container.disabled {
+    background: var(--gray);
+    color: var(--disabled);
+    cursor: not-allowed; /* Чтобы показать, что кнопка неактивна */
+    pointer-events: none; /* Отключает кликабельность кнопки */
+    box-shadow: none; /* Убрать тень для неактивного состояния */
+}
+/* Стили для иконок внутри второстепенной и неактивной кнопок */
+.button-container.secondary .icon,
+.button-container.disabled .icon {
+    color: inherit; /* Заставляет иконки наследовать цвет текста кнопки */
+}
+
+/* Стили для иконки внутри кнопки */
+.button-container .icon {
+    margin-right: 10px; /* Расстояние между иконкой и текстом */
+}
+
